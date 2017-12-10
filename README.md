@@ -1,13 +1,12 @@
 # Alice in Tumblrland
 ##### Open a whole new era. Create your own Tumblr bot.
+Are you interested in new Tumblr posts, trends or just want thousands of followers? Alice can help you do things quickly and easily.
 
 > **Life found a way.** - Dr. Alan Grant
 
 ## What You Need
 + **Get an OAuth** key: [Tumblr api documentation](https://www.tumblr.com/docs/en/api/v2)
-+ **Setup** your settings.js
-
-⋅⋅⋅The available settings the following:
++ **Setup** your settings.js. The available settings the following:
 ```javascript
 exports.tagsArray = ['fail', 'funny gifs', 'funny gif', 'epic fail', 'haha', 'lol', 'funny']
 exports.commentsArray = ['awhhh *.*', '*.*', 'always reblog']
@@ -46,5 +45,11 @@ Like post id: 166927269501  reblog_key: Zgj6aX3y
 
 
 ----------
+## Features
 
-
+ - Start Today, run forever
+ - Like, Reblog posts
+ - Posting images, texts
+ - Explore and follow new blogs
+ - Random-userlike experience
+ - Flexible setting options
