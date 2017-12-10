@@ -6,7 +6,8 @@
 ## What You Need
 + **Get an OAuth** key: [Tumblr api documentation](https://www.tumblr.com/docs/en/api/v2)
 + **Setup** your settings.js
-The available settings the following:
+
+⋅⋅⋅The available settings the following:
 ```javascript
 exports.tagsArray = ['fail', 'funny gifs', 'funny gif', 'epic fail', 'haha', 'lol', 'funny']
 exports.commentsArray = ['awhhh *.*', '*.*', 'always reblog']
