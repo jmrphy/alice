@@ -4,6 +4,15 @@ Are you interested in new Tumblr posts, trends or just want thousands of followe
 
 > **Life found a way.** - Dr. Alan Grant
 
+## Features
+
+ - Start Today, run forever
+ - Like, Reblog posts
+ - Posting images, texts
+ - Explore and follow new blogs
+ - Random-userlike experience
+ - Flexible setting options
+
 ## What You Need
 + **Get an OAuth** key: [Tumblr api documentation](https://www.tumblr.com/docs/en/api/v2)
 + **Setup** your settings.js. The available settings the following:
@@ -42,14 +51,3 @@ Minimum note count: 460
 ------------------------------
 Like post id: 166927269501  reblog_key: Zgj6aX3y
 ```
-
-
-----------
-## Features
-
- - Start Today, run forever
- - Like, Reblog posts
- - Posting images, texts
- - Explore and follow new blogs
- - Random-userlike experience
- - Flexible setting options
