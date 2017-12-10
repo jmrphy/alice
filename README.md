@@ -51,3 +51,5 @@ Minimum note count: 460
 ------------------------------
 Like post id: 166927269501  reblog_key: Zgj6aX3y
 ```
+## Requirements
++ Node.js [download](https://nodejs.org/en/#download)
