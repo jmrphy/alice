@@ -8,7 +8,7 @@ Are you interested in new Tumblr posts, trends or just want thousands of followe
 
  - Start Today, run forever
  - Like, Reblog posts
- - Posting images, texts
+ - Post images, texts
  - Explore and follow new blogs
  - Random-userlike experience
  - Flexible setting options
