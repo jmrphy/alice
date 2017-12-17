@@ -1,7 +1,6 @@
 var utils = require('./utils.js')
-var settings = require('../settings.js')
-var tumblr = require('./tumblr')
-tumblr.request(require('request'))
+var settings = require('../settings_alice.js')
+var tumblr = require('tumblr.js')
 
 var client = tumblr.createClient({
 	consumer_key: settings.consumerKey,
@@ -52,7 +51,7 @@ module.exports = {
 	},
 
 	getFollowers: function (offset) {
-		client.following(offset, function (err, data) {
+		client.userFollowing(offset, function (err, data) {
 			if (err) {
 				console.log('|ERROR| client.following:', err, data)
 			} else {
@@ -70,13 +69,13 @@ module.exports = {
 		if (id != 0) {
 			var random = utils.randomInt(0,10)
 			if (random < 9 && followers.indexOf(url) == -1) {
-				module.exports.followUser(url)
+				module.exports.followBlog(url)
 			}
 			if (random < 3) {
 				if (utils.randomInt(0,10) < 10 && imageUrl != '' && postTags != '') {
-					module.exports.postPhoto(settings.blogName, imageUrl, postTags)
+					module.exports.createPhotoPost(settings.blogName, imageUrl, postTags)
 				} else {
-					module.exports.reblog(settings.blogName, id, reblogKey)
+					module.exports.reblogPost(settings.blogName, id, reblogKey)
 				}
 			}
 		} else {
@@ -101,9 +100,9 @@ module.exports = {
 		if (before != 0) {
 			params = { before: before, limit: limit }
 		}
-		client.tagged(tags, params, function (err, data) {
+		client.taggedPosts(tags, params, function (err, data) {
 			if (err) {
-				console.log('|ERROR| client.tagged:', err, data)
+				console.log('|ERROR| client.taggedPosts:', err, data)
 			} else if (data != null && data.length > 0) {
 				data.forEach(function (post) {
 					lastDate = post.timestamp
@@ -134,45 +133,45 @@ module.exports = {
 
 	likePost: function (id, reblogKey) {
 		console.log('Like post id:', id, 'reblogKey:', reblogKey)
-		client.like(id, reblogKey, function (err, data) {
+		client.likePost(id, reblogKey, function (err, data) {
 			if (err) {
-				console.log('|ERROR| client.like:', err, data)
+				console.log('|ERROR| client.likePost:', err, data)
 			}
 		})
 	},
 
-	followUser: function (url) {
+	followBlog: function (url) {
 		console.log('Follow blog:', url)
-		client.follow(url, function (err, data) {
+		client.followBlog(url, function (err, data) {
 			if (err) {
-				console.log('|ERROR| client.follow:', err, data)
+				console.log('|ERROR| client.followBlog:', err, data)
 			} else {
 				followers.push(url)
 			}
 		})
 	},
 
-	postPhoto: function (blogName, imgUrl, tags) {
+	createPhotoPost: function (blogName, imgUrl, tags) {
 		console.log("Post image:", imgUrl, 'with tags:', tags)
-		client.photo(blogName, { source: imgUrl, tags: tags }, function (err, data) {
+		client.createPhotoPost(blogName, { source: imgUrl, tags: tags }, function (err, data) {
 			if (err) {
-				console.log('|ERROR| client.photo:', err, data)
+				console.log('|ERROR| client.createPhotoPost:', err, data)
 			} else {
 				reblogKeyArray.push(reblogKey)
 			}
 		})
 	},
 
-	reblog: function (blogName, id, reblogKey) {
+	reblogPost: function (blogName, id, reblogKey) {
 		console.log('Reblog id:', id, 'reblogKey:', reblogKey)
 		var params = { id: id, reblogKey: reblogKey }
 		if (utils.randomInt(0, 10) == 1) {
 			var randomComment = settings.commentsArray[utils.randomInt(0, settings.commentsArray.length)]
 			params = { id: id, reblogKey: reblogKey, comment: randomComment }
 		}
-		client.reblog(blogName, params, function (err, data) {
+		client.reblogPost(blogName, params, function (err, data) {
 			if (err) {
-				console.log('|ERROR| client.reblog:', err, data)
+				console.log('|ERROR| client.reblogPost:', err, data)
 			} else {
 				reblogKeyArray.push(reblogKey)
 			}
